@@ -35,7 +35,7 @@ rect_y = screen_height - cat_height
 
 cat_is_moving_left, cat_is_moving_right = False, False
 
-STEP = 20
+STEP = 10
 
 pin_active = False
 pin_timer = 0  # Время, когда нажали пробел
@@ -67,7 +67,8 @@ def spawn_rate():
         rate_images[randint(0, len(rate_images) - 1)], (rate_width, rate_height))
 
 
-RATE_SPEED = 2
+RATE_SPEED = 0.5
+rate_new_speed = RATE_SPEED
 
 rate_x, rate_y, rate_image = spawn_rate()
 
@@ -129,7 +130,7 @@ while game_is_runnig:
     booms = new_booms
 
     # Двигаем крысу
-    rate_y += RATE_SPEED
+    rate_y += rate_new_speed
 
     # Проверяем попадание снаряда в крысу
     for boom_x, boom_y in booms:
@@ -137,6 +138,7 @@ while game_is_runnig:
                 and rate_y < boom_y < rate_y + rate_height:
             boom_fired = False  # Сброс флага, так как снаряд попал в цель
             rate_x, rate_y, rate_image = spawn_rate()  # Спавним новую крысу
+            rate_new_speed +=RATE_SPEED+0.05
 
     # Если крыса дошла до низа, она возрождается
     if rate_y + rate_height >= screen_height:

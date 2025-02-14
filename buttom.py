@@ -28,7 +28,7 @@ class Image_Buttom:
         current_image = self.hover_image if self.is_hovered else self.image
         screen.blit(current_image, self.rect.topleft)
         # данные текста
-        font = pygame.font.Font("images/myttf.ttf", 30)
+        font = pygame.font.Font("images/myttf.ttf", 40)
         text_surfase = font.render(self.text, True, (35, 45, 83))
         text_rect = text_surfase.get_rect(center=self.rect.center)
         screen.blit(text_surfase, text_rect)

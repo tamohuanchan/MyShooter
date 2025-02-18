@@ -151,7 +151,7 @@ def new_game():
 
     cat_is_moving_left, cat_is_moving_right = False, False
 
-    STEP = 10
+    STEP = 1
 
     pin_active = False
     pin_timer = 0
@@ -183,7 +183,7 @@ def new_game():
         return randint(0, screen_width - rate_width), 0, pygame.transform.scale(
             rate_images[randint(0, len(rate_images) - 1)], (rate_width, rate_height))
 
-    RATE_SPEED = 0.5
+    RATE_SPEED = 0.2
     rate_new_speed = RATE_SPEED
 
     rate_x, rate_y, rate_image = spawn_rate()
